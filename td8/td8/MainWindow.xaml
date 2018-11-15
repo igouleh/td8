@@ -1,12 +1,22 @@
-﻿<Window x:Class="td8.MainWindow"
+﻿<Window x:Class="CompteTd6.View.RetraitDepotWindow"
+
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:td8"
+        xmlns:local="clr-namespace:CompteTd6.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        DataContext="{Binding RetraitDepot, Source={StaticResource Locator}}"
+        Title="RetraitDepotWindow" Height="450" Width="800">
     <Grid>
-        
+        <ComboBox x:Name="OperationSelectionee" HorizontalAlignment="Left" Height="39" Margin="400,72,0,0" VerticalAlignment="Top" Width="348" ItemsSource="{Binding Operation}" SelectedIndex="0" FontSize="18"  SelectedItem="{Binding OperationSelectionee}"/>
+        <ComboBox x:Name="CompteSelectionne"  HorizontalAlignment="Left" Height="38" Margin="400,158,0,0" VerticalAlignment="Top" Width="348" ItemsSource="{Binding Comptes}" SelectedIndex="0" FontSize="18" SelectedItem="{Binding CompteSelectione}" DisplayMemberPath="IdCompte" SelectionChanged="CompteSelectionne_SelectionChanged"/>
+        <TextBox x:Name="Valeur" HorizontalAlignment="Left" Height="39" Margin="400,261,0,0" TextWrapping="Wrap" Text="{Binding Montant}" VerticalAlignment="Top" Width="348"  FontSize="18"/>
+        <Label Content="Opération à effectuer :" HorizontalAlignment="Left" Height="39" Margin="44,72,0,0" VerticalAlignment="Top" Width="278"/>
+        <Label Content="Compte :" HorizontalAlignment="Left" Height="39" Margin="44,158,0,0" VerticalAlignment="Top" Width="278"/>
+        <Label Content="Opération :" HorizontalAlignment="Left" Height="39" Margin="44,261,0,0" VerticalAlignment="Top" Width="278"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="44,340,0,0" VerticalAlignment="Top" Width="312" Height="56" Command="{Binding BtnSetOperationBancaire}" />
+        <Button Content="Annuler" HorizontalAlignment="Left" Margin="436,340,0,0" VerticalAlignment="Top" Width="312" Height="56" Command="{Binding BtnAnnule}" />
+
     </Grid>
 </Window>
